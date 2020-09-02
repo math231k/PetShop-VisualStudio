@@ -3,6 +3,7 @@ using PetShop.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 
@@ -14,6 +15,7 @@ namespace PetShop.UI
     class Printer
     {
         private IPetService _PetService { get; set; }
+        private IOwnerService _OwnerService { get; set; }
         private List<Pet> petsList { get; set; }
 
         /// <summary>
@@ -21,9 +23,10 @@ namespace PetShop.UI
         /// It initializes the visual list and calls the navigate method afterwards
         /// </summary>
         /// <param name="petService">The implementation of the IPetService interface</param>
-        public Printer(IPetService petService)
+        public Printer(IPetService petService, IOwnerService ownerService)
         {
             _PetService = petService;
+            _OwnerService = ownerService;
             FetchPets();
             Navigate();
         }
@@ -255,24 +258,60 @@ namespace PetShop.UI
 
         public void PrintPetDetails()
         {
-            
+
             Console.WriteLine("Please Select the pet you want the details of");
-            int detailIndex = int.Parse(Console.ReadLine())-1;
+            int detailIndex = int.Parse(Console.ReadLine()) - 1;
 
             Pet result = petsList.ElementAt(detailIndex);
 
             Console.Clear();
-            Console.WriteLine("Index: "+result.Id);
-            Console.WriteLine("Name: "+result.Name);
-            Console.WriteLine("Species: "+result.Type);
-            Console.WriteLine("Colour(s): "+result.Color);
-            Console.WriteLine("Birthdate: "+result.BirthDate);
-            Console.WriteLine("Selling date: "+result.SoldDate);
-            Console.WriteLine("Price: "+result.price);
+            Console.WriteLine(" ____________________ ");
+            Console.WriteLine("|                    |");
+            Console.WriteLine("|     Pet Details    |");
+            Console.WriteLine("|____________________|");
+            Console.WriteLine("");
+            Console.WriteLine("Index: " + result.Id);
+            Console.WriteLine("Name: " + result.Name);
+            Console.WriteLine("Species: " + result.Type);
+            Console.WriteLine("Colour(s): " + result.Color);
+            Console.WriteLine("Birthdate: " + result.BirthDate);
+            Console.WriteLine("Selling date: " + result.SoldDate);
+            Console.WriteLine("Price: " + result.price);
             Console.WriteLine();
-            Console.WriteLine("Press enter to return to list...");
-            Console.ReadLine();
+            Console.WriteLine("1. Get owner details");
+            Console.WriteLine("0. Go back...");
+            int outcome = int.Parse(Console.ReadLine());
+
+            switch (outcome)
+            {
+                case 1:
+                    PrintPrevOwner(result);
+                    break;
+                default:
+                    CreatePet();
+                    FetchPets();
+                    Navigate();
+                    break;
+            }
         }
+
+        public void PrintPrevOwner(Pet p)
+        {
+            Owner owner = _OwnerService.getOwner(p);
+            Console.Clear();
+            Console.WriteLine(" ____________________ ");
+            Console.WriteLine("|                    |");
+            Console.WriteLine("|    Owner Details   |");
+            Console.WriteLine("|____________________|");
+            Console.WriteLine("");
+            Console.WriteLine("Name: " + owner.FirstName + " " + owner.LastName);
+            Console.WriteLine("addess: " + owner.address);
+            Console.WriteLine("Email: " +owner.Email);
+            Console.WriteLine("Phone: " + owner.PhoneNumber);
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to return...");
+            Console.ReadLine();
+         }
     }        
 }
 

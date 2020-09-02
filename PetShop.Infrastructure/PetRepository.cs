@@ -41,7 +41,7 @@ namespace PetShop.Infrastructure.Data
                 if (pet.Id == p.Id)
                 {
                     pet.Name = p.Name;
-                    pet.PreviousOwner = p.PreviousOwner;
+                    pet.OwnerId = p.OwnerId;
                     pet.price = p.price;
                     pet.SoldDate = p.SoldDate;
                     pet.Type = p.Type;

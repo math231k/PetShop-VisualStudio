@@ -12,7 +12,9 @@ namespace PetShop.UI
         {
             IPetRepository _PetRepository = new PetRepository();
             IPetService _PetService = new PetService(_PetRepository);
-            Printer printer = new Printer(_PetService);
+            IOwnerRepository _OwnerRepository = new OwnerRepository();
+            IOwnerService _OwnerService = new OwnerService(_OwnerRepository);
+            Printer printer = new Printer(_PetService, _OwnerService);
         }
     }
 }
