@@ -229,7 +229,7 @@ namespace PetShop.UI
             Console.WriteLine("Enter a name");
             string name = Console.ReadLine();
             Console.WriteLine("Enter Previous Owner");
-            string prevOwner = Console.ReadLine();
+            int prevOwner = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter a BirthDate");
             DateTime birthdate = DateTime.Parse(Console.ReadLine());
             Console.WriteLine("Enter what kind of animal this is");
@@ -246,7 +246,7 @@ namespace PetShop.UI
                 Name = name,
                 BirthDate = birthdate,
                 Color = colour,
-                PreviousOwner = prevOwner,
+                OwnerId = prevOwner,
                 price = price,
                 SoldDate = soldBy,
                 Type = (Enum)Enum.Parse(typeof(Pet.Types), type.ToLower())
@@ -266,7 +266,6 @@ namespace PetShop.UI
             Console.WriteLine("Name: "+result.Name);
             Console.WriteLine("Species: "+result.Type);
             Console.WriteLine("Colour(s): "+result.Color);
-            Console.WriteLine("Previous owner: "+result.PreviousOwner);
             Console.WriteLine("Birthdate: "+result.BirthDate);
             Console.WriteLine("Selling date: "+result.SoldDate);
             Console.WriteLine("Price: "+result.price);

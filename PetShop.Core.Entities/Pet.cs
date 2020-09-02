@@ -13,7 +13,7 @@ namespace PetShop.Core.Entities
         public DateTime BirthDate { get; set; }
         public DateTime SoldDate { get; set; }
         public string Color { get; set; }
-        public string PreviousOwner { get; set; }
+        public int OwnerId { get; set; }
         public double price { get; set; }
 
         public enum Types
@@ -30,7 +30,7 @@ namespace PetShop.Core.Entities
         override
             public string ToString()
         {
-            return Id + "   " + Name + ",   " + Type + ",   " + PreviousOwner + ",  " + price;
+            return Id + "   " + Name + ",   " + Type + ",  " + price;
         }
     }
 }

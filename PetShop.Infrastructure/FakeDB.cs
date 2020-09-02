@@ -9,7 +9,9 @@ namespace PetShop.Infrastructure.Data
     public class FakeDB
     {
         public static List<Pet> Pets { get; set; }
-        private static int id = 1;
+        public static List<Owner> Owners { get; set; }
+        private static int petId = 1;
+        private static int ownerId = 1;
         private static FakeDB fakeDBInstance;
         private FakeDB()
         {
@@ -18,7 +20,7 @@ namespace PetShop.Infrastructure.Data
 
         public Pet AddPetToDatabase(Pet p)
         {
-            p.Id = id++;
+            p.Id = petId++;
             Pets.Add(p);
             return p;
         }
@@ -26,13 +28,13 @@ namespace PetShop.Infrastructure.Data
         private static void initData()
         {
             Pets = new List<Pet>();
-            
+            Owners = new List<Owner>();
             Pets.Add(new Pet
             {
-                Id = id++,
+                Id = petId++,
                 Name = "Leika",
                 Color = "White & Black",
-                PreviousOwner = "CCCP",
+                OwnerId = 1,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
                 Type = Pet.Types.dog,
@@ -42,10 +44,10 @@ namespace PetShop.Infrastructure.Data
 
             Pets.Add(new Pet
             {
-                Id = id++,
+                Id = petId++,
                 Name = "Vasha",
                 Color = "White",
-                PreviousOwner = "CCCP",
+                OwnerId = 2,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
                 Type = Pet.Types.dog,
@@ -55,10 +57,10 @@ namespace PetShop.Infrastructure.Data
 
             Pets.Add(new Pet
             {
-                Id = id++,
+                Id = petId++,
                 Name = "Strelka",
                 Color = "White",
-                PreviousOwner = "CCCP",
+                OwnerId = 1,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
                 Type = Pet.Types.dog,
@@ -68,10 +70,10 @@ namespace PetShop.Infrastructure.Data
 
             Pets.Add(new Pet
             {
-                Id = id++,
+                Id = petId++,
                 Name = "Belka",
                 Color = "White",
-                PreviousOwner = "CCCP",
+                OwnerId = 2,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
                 Type = Pet.Types.dog,
@@ -81,10 +83,10 @@ namespace PetShop.Infrastructure.Data
 
             Pets.Add(new Pet
             {
-                Id = id++,
+                Id = petId++,
                 Name = "Veterok",
                 Color = "White",
-                PreviousOwner = "CCCP",
+                OwnerId = 1,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
                 Type = Pet.Types.dog,
@@ -94,14 +96,37 @@ namespace PetShop.Infrastructure.Data
 
             Pets.Add(new Pet
             {
-                Id = id++,
+                Id = petId++,
                 Name = "Pushinka",
                 Color = "White",
-                PreviousOwner = "CCCP",
+                OwnerId = 2,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
                 Type = Pet.Types.dog,
                 price = 12000
+            });
+
+            Owners.Add(new Owner
+            {
+                Id = ownerId++,
+                FirstName = "Yuri",
+                LastName = "Gagarin",
+                address = "Vostok 1",
+                Email = "Gagarin@ruMail.su",
+                PhoneNumber = "56 32 11 67"
+                
+            }
+            );
+
+            Owners.Add(new Owner
+            {
+                Id = ownerId++,
+                FirstName = "Nikita",
+                LastName = "Krustyev",
+                address = "Kremlin 18",
+                Email = "Krustyev@ruMail.su",
+                PhoneNumber = "26 34 71 62"
+
             }
             );
         }

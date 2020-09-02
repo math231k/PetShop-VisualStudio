@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gKX/TNSL18VCQGRx9kpG1s9MFfj+SyYULYZPcOX+FBZ4NdY1SOmAB+Z8UDdqbP4tLRMA7En7ofncq3Vl9mdUag==",
+  "dgSpecHash": "R/rzTj4O9r2oZyzSLEmI13wQzGTYMEy90n3Vhjfvp7uXPlxs7qv+yrrPoW//pT+oH1fXxg8IYLGgw0pJBJyzIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\math2\\source\\repos\\math231k\\ConsoleMovieLibrary\\PetShop\\PetShot.RestAPI\\PetShot.WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShot.RestAPI\\PetShot.WebAPI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

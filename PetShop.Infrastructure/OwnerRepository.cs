@@ -24,7 +24,7 @@ namespace PetShop.Infrastructure.Data
 
     public Owner GetOwner(Pet p)
     {
-            foreach (Owner o in FakeDB.owners)
+            foreach (Owner o in FakeDB.Owners)
             {
                 if(p.OwnerId == o.Id)
                 {
@@ -34,7 +34,12 @@ namespace PetShop.Infrastructure.Data
             return null;
     }
 
-    public Owner UpdateOwner(Owner o)
+        public List<Owner> ReadOwners()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Owner UpdateOwner(Owner o)
     {
         throw new NotImplementedException();
     }
