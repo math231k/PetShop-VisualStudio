@@ -17,12 +17,12 @@ namespace PetShop.Core.ApplicationServices.Implementation
         }
         public Owner CreateOwner(Owner o)
         {
-            throw new NotImplementedException();
+            return _OwnerRepository.CreateOwner(o);
         }
 
         public Owner DeleteOwner(Owner o)
         {
-            throw new NotImplementedException();
+            return _OwnerRepository.DeleteOwner(o);
         }
 
         public Owner getOwner(Pet p)
@@ -32,12 +32,12 @@ namespace PetShop.Core.ApplicationServices.Implementation
 
         public List<Owner> ReadOwners()
         {
-            throw new NotImplementedException();
+            return _OwnerRepository.ReadOwners();
         }
 
         public Owner UpdateOwner(Owner o)
         {
-            throw new NotImplementedException();
+            return _OwnerRepository.UpdateOwner(o);
         }
     }
 }

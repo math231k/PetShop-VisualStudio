@@ -111,7 +111,7 @@ namespace PetShop.Infrastructure.Data
                 Id = ownerId++,
                 FirstName = "Yuri",
                 LastName = "Gagarin",
-                address = "Vostok 1",
+                Address = "Vostok 1",
                 Email = "Gagarin@ruMail.su",
                 PhoneNumber = "56 32 11 67"
                 
@@ -123,7 +123,7 @@ namespace PetShop.Infrastructure.Data
                 Id = ownerId++,
                 FirstName = "Nikita",
                 LastName = "Krustyev",
-                address = "Kremlin 18",
+                Address = "Kremlin 18",
                 Email = "Krustyev@ruMail.su",
                 PhoneNumber = "26 34 71 62"
 

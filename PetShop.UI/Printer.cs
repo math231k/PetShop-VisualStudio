@@ -256,6 +256,29 @@ namespace PetShop.UI
             };
         }
 
+        public Owner GenerateOwner()
+        {
+            Console.WriteLine("Please enter pevious owners first name");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Please enter pevious owners Last name");
+            string lastName = Console.ReadLine();
+            Console.WriteLine("Please enter pevious owners address");
+            string address = Console.ReadLine();
+            Console.WriteLine("Please enter pevious owners e-mail address");
+            string email = Console.ReadLine();
+            Console.WriteLine("Please enter pevious owners telephone number");
+            string phoneNumber = Console.ReadLine();
+
+            return new Owner
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                Email = email,
+                PhoneNumber = phoneNumber
+            };
+        }
+
         public void PrintPetDetails()
         {
 
@@ -305,7 +328,7 @@ namespace PetShop.UI
             Console.WriteLine("|____________________|");
             Console.WriteLine("");
             Console.WriteLine("Name: " + owner.FirstName + " " + owner.LastName);
-            Console.WriteLine("addess: " + owner.address);
+            Console.WriteLine("addess: " + owner.Address);
             Console.WriteLine("Email: " +owner.Email);
             Console.WriteLine("Phone: " + owner.PhoneNumber);
             Console.WriteLine("");
