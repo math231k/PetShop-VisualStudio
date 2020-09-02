@@ -1,0 +1,9 @@
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\bin\Debug\netcoreapp3.1\PetShop.Core.Entities.deps.json
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\bin\Debug\netcoreapp3.1\PetShop.Core.Entities.dll
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\bin\Debug\netcoreapp3.1\PetShop.Core.Entities.pdb
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\obj\Debug\netcoreapp3.1\PetShop.Core.Entities.csprojAssemblyReference.cache
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\obj\Debug\netcoreapp3.1\PetShop.Core.Entities.AssemblyInfoInputs.cache
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\obj\Debug\netcoreapp3.1\PetShop.Core.Entities.AssemblyInfo.cs
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\obj\Debug\netcoreapp3.1\PetShop.Core.Entities.csproj.CoreCompileInputs.cache
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\obj\Debug\netcoreapp3.1\PetShop.Core.Entities.dll
+C:\Users\math2\Documents\GitHub\ConsoleMovieLibrary\PetShop\PetShop.Core.Entities\obj\Debug\netcoreapp3.1\PetShop.Core.Entities.pdb
