@@ -14,9 +14,11 @@ namespace PetShop.UI
     /// </summary>
     class Printer
     {
+        public static Pet selectedPet = null;
         private IPetService _PetService { get; set; }
         private IOwnerService _OwnerService { get; set; }
         private List<Pet> petsList { get; set; }
+        private List<Owner> ownerList { get; set; }
 
         /// <summary>
         /// Constructer used for creating a new instance of this class
@@ -49,6 +51,7 @@ namespace PetShop.UI
             }
             Console.WriteLine();
             petsList = _PetService.GetPets();
+            ownerList = _OwnerService.ReadOwners();
             Navigate();
         }
         /// <summary>
@@ -57,12 +60,13 @@ namespace PetShop.UI
         public void Navigate()
         {
             Console.WriteLine("What would you like to do?");
-            Console.WriteLine("1. Remove an animal from the database");
-            Console.WriteLine("2. Create a new entry");
-            Console.WriteLine("3. Update an entry");
-            Console.WriteLine("4. Sort after price");
-            Console.WriteLine("5. Get the five cheepest");
-            Console.WriteLine("6. Search for a pet");
+            Console.WriteLine("1. Get animal details");
+            Console.WriteLine("2. Remove an animal from the database");
+            Console.WriteLine("3. Create a new entry");
+            Console.WriteLine("4. Update an entry");
+            Console.WriteLine("5. Sort after price");
+            Console.WriteLine("6. Get the five cheepest");
+            Console.WriteLine("7. Search for a pet");
             Console.WriteLine("0. Exit the application");
             int outcome = 0;
             try
@@ -89,33 +93,33 @@ namespace PetShop.UI
 
             switch (outcome)
             {
-                case 1:
+                case 2:
                     RemovePet();
                     FetchPets();
                     Navigate();
                     break;
-                case 2:
+                case 3:
                     CreatePet();
                     FetchPets();
                     Navigate();
                     break;
-                case 3:
+                case 4:
                     UpdatePet();
                     FetchPets();
                     Navigate();
                     break;
-                case 4:
+                case 5:
                     SortAfterPrice();
                     FetchPets();
                     Navigate();
                     break;
-                case 5:
+                case 6:
                     GetFiveCheep();
                     break;
-                case 6:
+                case 7:
                     SearchForPet();
                     break;
-                case 7:
+                case 1:
                     PrintPetDetails();
                     FetchPets();
                     Navigate();
@@ -229,33 +233,65 @@ namespace PetShop.UI
         /// <returns>The pet created based on the users input</returns>
         public Pet GeneratePet()
         {
-            Console.WriteLine("Enter a name");
-            string name = Console.ReadLine();
-            Console.WriteLine("Enter Previous Owner");
-            int prevOwner = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter a BirthDate");
-            DateTime birthdate = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("Enter what kind of animal this is");
-            string type = Console.ReadLine();
-            Console.WriteLine("Enter the colour of the animal");
-            string colour = Console.ReadLine();
-            Console.WriteLine("Enter what date it was sold");
-            DateTime soldBy = DateTime.Parse(Console.ReadLine());
-            Console.WriteLine("What is the price");
-            double price = double.Parse(Console.ReadLine());
+            
+            int ownerId = 0;
+            string name = "";
+            DateTime birthdate = DateTime.UtcNow;
+            string type = "";
+            string colour = "";
+            DateTime soldBy = DateTime.UtcNow;
+            double price = 0;
 
-            return new Pet
+            try
             {
-                Name = name,
-                BirthDate = birthdate,
-                Color = colour,
-                OwnerId = prevOwner,
-                price = price,
-                SoldDate = soldBy,
-                Type = (Enum)Enum.Parse(typeof(Pet.Types), type.ToLower())
-            };
-        }
+                Console.WriteLine("Enter a name");
+                name = Console.ReadLine();
+                Console.WriteLine("Do you wish to add a previous owner? (y/n)");
+                if (Console.ReadLine().ToLower().Equals("y"))
+                {
+                    Owner prevOwnerId = GenerateOwner();
+                    ownerId = prevOwnerId.Id;
+                }
+                Console.WriteLine("Enter a BirthDate");
+                birthdate = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Enter what kind of animal this is\nEither dog, cat, hamster, fish, bird, snake or tarantula");
+                type = Console.ReadLine();
+                Console.WriteLine("Enter the colour of the animal");
+                colour = Console.ReadLine();
+                Console.WriteLine("Enter what date it was sold");
+                soldBy = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("What is the price");
+                price = double.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong please try again");
+                GeneratePet();
+            }
+            try
+            {
+                return new Pet
+                {
+                    Name = name,
+                    BirthDate = birthdate,
+                    Color = colour,
+                    OwnerId = ownerId,
+                    price = price,
+                    SoldDate = soldBy,
+                    Type = (Enum)Enum.Parse(typeof(Pet.Types), type.ToLower())
 
+                };
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Pet type did not comply with rules, try again");
+                return null;
+            }
+        }
+        /// <summary>
+        /// Method Creating a previous owner for the pet via user input
+        /// </summary>
+        /// <returns>The owner created</returns>
         public Owner GenerateOwner()
         {
             Console.WriteLine("Please enter pevious owners first name");
@@ -269,23 +305,33 @@ namespace PetShop.UI
             Console.WriteLine("Please enter pevious owners telephone number");
             string phoneNumber = Console.ReadLine();
 
-            return new Owner
+            return _OwnerService.CreateOwner(new Owner
             {
                 FirstName = firstName,
                 LastName = lastName,
                 Address = address,
                 Email = email,
                 PhoneNumber = phoneNumber
-            };
+            });
         }
-
+        /// <summary>
+        /// Prints all the data avalible for the animal
+        /// </summary>
         public void PrintPetDetails()
         {
-
-            Console.WriteLine("Please Select the pet you want the details of");
-            int detailIndex = int.Parse(Console.ReadLine()) - 1;
-
-            Pet result = petsList.ElementAt(detailIndex);
+            Pet result;
+            if (selectedPet == null)
+            {
+                Console.WriteLine("Please Select the pet you want the details of");
+                int detailIndex = int.Parse(Console.ReadLine()) - 1;
+                result = petsList.ElementAt(detailIndex);
+                selectedPet = result;
+            }
+            else
+            {
+                result = selectedPet;
+            }
+            
 
             Console.Clear();
             Console.WriteLine(" ____________________ ");
@@ -302,22 +348,47 @@ namespace PetShop.UI
             Console.WriteLine("Price: " + result.price);
             Console.WriteLine();
             Console.WriteLine("1. Get owner details");
+            Console.WriteLine("2. Add a previous owner");
             Console.WriteLine("0. Go back...");
             int outcome = int.Parse(Console.ReadLine());
 
             switch (outcome)
             {
                 case 1:
-                    PrintPrevOwner(result);
+                    if (result.OwnerId>0) {
+                        PrintPrevOwner(result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("A previous owner has not been assigned to this pet");
+                        Console.ReadLine();
+                        PrintPetDetails();
+                    }
+                    break;
+                case 2:
+                    if (selectedPet.OwnerId <= 0) {
+                        GenerateOwner();
+                        PrintPetDetails();
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("This pet already has a previous owner. \nPlease remove the previous owner in the owner details menu.\nPress enter to return");
+                        Console.ReadLine();
+                        PrintPetDetails();
+                    }
                     break;
                 default:
-                    CreatePet();
+                    selectedPet = null;
                     FetchPets();
                     Navigate();
                     break;
             }
         }
-
+        /// <summary>
+        /// Prints all avalible data from the previous owner
+        /// </summary>
+        /// <param name="p">The previous owner just created</param>
         public void PrintPrevOwner(Pet p)
         {
             Owner owner = _OwnerService.getOwner(p);
@@ -332,9 +403,46 @@ namespace PetShop.UI
             Console.WriteLine("Email: " +owner.Email);
             Console.WriteLine("Phone: " + owner.PhoneNumber);
             Console.WriteLine("");
-            Console.WriteLine("Press enter to return...");
-            Console.ReadLine();
-         }
+            Console.WriteLine("1. Update previous owner details");
+            Console.WriteLine("2. Remove previous owner");
+            Console.WriteLine("0. Return to pet details");
+            int outcome = int.Parse(Console.ReadLine());
+
+            switch (outcome)
+            {
+                case 1:
+                    UpdateOwner();
+                    PrintPrevOwner(selectedPet);
+                    break;
+                case 2:
+                    RemoveOwner(ownerList.ElementAt(selectedPet.OwnerId-1));
+                    PrintPetDetails();
+                    break;
+                default:
+                    PrintPetDetails();
+                    break;
+            }
+        }
+        /// <summary>
+        /// Removes the selected owner from the database and sets pet ownerid to 0 for 'no reference'
+        /// </summary>
+        /// <param name="o">The owner you want to delete</param>
+        /// <returns>The deleted owner</returns>
+        public Owner RemoveOwner(Owner o)
+        {
+            selectedPet.OwnerId = 0;
+            return _OwnerService.DeleteOwner(o);
+        }
+        /// <summary>
+        /// Updates the data of the owner currently selected
+        /// </summary>
+        /// <returns>The updated owner</returns>
+        public Owner UpdateOwner()
+        {
+            Owner updateOwner = GenerateOwner();
+            updateOwner.Id = selectedPet.OwnerId;
+            return _OwnerService.UpdateOwner(updateOwner);
+        }
     }        
 }
 

@@ -24,6 +24,12 @@ namespace PetShop.Infrastructure.Data
             Pets.Add(p);
             return p;
         }
+        public Owner AddOwnerToDatabase(Owner o)
+        {
+            o.Id = ownerId++;
+            Owners.Add(o);
+            return o;
+        }
 
         private static void initData()
         {

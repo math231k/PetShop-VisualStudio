@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.7": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
       "PetShop.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -42,6 +51,20 @@
     }
   },
   "libraries": {
+    "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.7": {
+      "sha512": "oKL2yNtTN1/cOp+cbdyv5TeLzO+GkO9B3fvbcPzKWTNCkDoH3ccYS3FWC1p4KSYe9frW4WsyfSTeM8X+xftOig==",
+      "type": "package",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
+        "microsoft.extensions.dependencyinjection.abstractions.3.1.7.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.nuspec"
+      ]
+    },
     "PetShop.Core/1.0.0": {
       "type": "project",
       "path": "../PetShop.Core/PetShop.Core.csproj",
@@ -60,6 +83,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Microsoft.Extensions.DependencyInjection.Abstractions >= 3.1.7",
       "PetShop.Core >= 1.0.0",
       "PetShop.Core.Entities >= 1.0.0",
       "PetShop.Infrastructure.Data >= 1.0.0"
@@ -71,11 +95,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\PetShop.UI.csproj",
+      "projectUniqueName": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\PetShop.UI.csproj",
       "projectName": "PetShop.UI",
-      "projectPath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\PetShop.UI.csproj",
+      "projectPath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\PetShop.UI.csproj",
       "packagesPath": "C:\\Users\\math2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\obj\\",
+      "outputPath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\math2\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -91,14 +115,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.Core.Entities\\PetShop.Core.Entities.csproj": {
-              "projectPath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.Core.Entities\\PetShop.Core.Entities.csproj"
+            "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.Core.Entities\\PetShop.Core.Entities.csproj": {
+              "projectPath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.Core.Entities\\PetShop.Core.Entities.csproj"
             },
-            "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.Core\\PetShop.Core.csproj": {
-              "projectPath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.Core\\PetShop.Core.csproj"
+            "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.Core\\PetShop.Core.csproj": {
+              "projectPath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.Core\\PetShop.Core.csproj"
             },
-            "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.Infrastructure\\PetShop.Infrastructure.Data.csproj": {
-              "projectPath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.Infrastructure\\PetShop.Infrastructure.Data.csproj"
+            "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.Infrastructure\\PetShop.Infrastructure.Data.csproj": {
+              "projectPath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.Infrastructure\\PetShop.Infrastructure.Data.csproj"
             }
           }
         }
@@ -111,6 +135,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": {
+            "target": "Package",
+            "version": "[3.1.7, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

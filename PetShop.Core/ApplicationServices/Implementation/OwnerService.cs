@@ -27,7 +27,7 @@ namespace PetShop.Core.ApplicationServices.Implementation
 
         public Owner getOwner(Pet p)
         {
-            return _OwnerRepository.GetOwner(p);
+                return _OwnerRepository.GetOwner(p);
         }
 
         public List<Owner> ReadOwners()
