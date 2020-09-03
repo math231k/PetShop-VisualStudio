@@ -38,4 +38,5 @@ C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.UI\obj\Debug\netcor
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.UI\obj\Debug\netcoreapp3.1\PetShop.UI.pdb
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.UI\obj\Debug\netcoreapp3.1\PetShop.UI.genruntimeconfig.cache
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.UI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.UI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.UI\obj\Debug\netcoreapp3.1\PetShop.UI.csproj.CoreCompileInputs.cache

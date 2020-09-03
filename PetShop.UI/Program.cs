@@ -11,11 +11,18 @@ namespace PetShop.UI
     {
         static void Main(string[] args)
         {
-            IPetRepository _PetRepository = new PetRepository();
-            IPetService _PetService = new PetService(_PetRepository);
-            IOwnerRepository _OwnerRepository = new OwnerRepository();
-            IOwnerService _OwnerService = new OwnerService(_OwnerRepository);
-            Printer printer = new Printer(_PetService, _OwnerService);
+            var service = new ServiceCollection();
+            service.AddScoped<IPetRepository, PetRepository>();
+            service.AddScoped<IPetService, PetService>();
+
+            service.AddScoped<IOwnerRepository, OwnerRepository>();
+            service.AddScoped<IOwnerService, OwnerService>();
+
+            var serviceProvider = service.BuildServiceProvider();
+            var petService = serviceProvider.GetRequiredService<IPetService>();
+            var ownerService = serviceProvider.GetRequiredService<IOwnerService>();
+
+            new Printer(petService, ownerService);
         }
     }
 }

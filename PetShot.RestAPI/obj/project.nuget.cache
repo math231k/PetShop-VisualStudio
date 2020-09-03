@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MLt8yFQY/QCmUAjUk//oVMUboHx7V3o9T4ZpZB/PlLDtSDiLIm1qDEDkW62mupli6V0ibjECIpqhmGs8dPUDTQ==",
+  "dgSpecHash": "nkRq0o/ahesrl4hAN2H1M7m+uFK+SEKA20GVnd79uruj0zqXIhzPigw1DZa9p/1FBJTiYfmaAr5bcX7fdlJ20Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShot.RestAPI\\PetShot.WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\math2\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.7\\microsoft.extensions.dependencyinjection.3.1.7.nupkg.sha512",
     "C:\\Users\\math2\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.7\\microsoft.extensions.dependencyinjection.abstractions.3.1.7.nupkg.sha512"
   ],
   "logs": []

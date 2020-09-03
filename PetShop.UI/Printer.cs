@@ -12,7 +12,7 @@ namespace PetShop.UI
     /// <summary>
     /// The class responsible for handeling UI. Inititalizes a welcome message and loads a kind of ListView (petsList).
     /// </summary>
-    class Printer
+    class Printer:IPrinter
     {
         public static Pet selectedPet = null;
         private IPetService _PetService { get; set; }
