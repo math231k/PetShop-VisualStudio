@@ -8,19 +8,33 @@ namespace PetShop.Infrastructure.Data
 {
     public class PetRepository: IPetRepository
     {
-        public FakeDB fakeDB = FakeDB.GetInstance();
+        public FakeDB database = FakeDB.GetInstance();
 
+        /// <summary>
+        /// Adds a new pet to the database
+        /// </summary>
+        /// <param name="p">The pet to be added</param>
+        /// <returns>The added pet</returns>
         public Pet CreatePet(Pet p)
         {
-            fakeDB.AddPetToDatabase(p);
+            database.AddPetToDatabase(p);
             return p;
         }
 
+        /// <summary>
+        /// Retrives all pets from the database
+        /// </summary>
+        /// <returns>All pets from the database</returns>
         public List<Pet> ReadPets()
         {
             return FakeDB.Pets;
         }
 
+        /// <summary>
+        /// Removes a pet from the database
+        /// </summary>
+        /// <param name="p">The pet to be removed</param>
+        /// <returns>The removed pet</returns>
         public Pet RemovePet(Pet p)
         {
             foreach (Pet pet in FakeDB.Pets)
@@ -34,6 +48,11 @@ namespace PetShop.Infrastructure.Data
             return null;
         }
 
+        /// <summary>
+        /// Updates data related to a pet
+        /// </summary>
+        /// <param name="p">The replacement pet</param>
+        /// <returns>The updated pet</returns>
         public Pet UpdatePet(Pet p)
         {
             foreach (Pet pet in FakeDB.Pets)
@@ -52,5 +71,6 @@ namespace PetShop.Infrastructure.Data
             }
             return null;
         }
+
     }
 }

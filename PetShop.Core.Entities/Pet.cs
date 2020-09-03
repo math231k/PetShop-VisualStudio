@@ -30,7 +30,7 @@ namespace PetShop.Core.Entities
         override
             public string ToString()
         {
-            return Id + "   " + Name + ",   " + Type + ",  " + price;
+            return Id + "   " + Name + ",   " + Type + ",  price: " + price+ " RUB";
         }
     }
 }
