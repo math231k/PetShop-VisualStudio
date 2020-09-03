@@ -7,6 +7,7 @@ namespace PetShop.Core.ApplicationServices
 {
     public interface IOwnerService
     {
+
         public List<Owner> ReadOwners();
         public Owner getOwner(Pet p);
         public Owner DeleteOwner(Owner o);

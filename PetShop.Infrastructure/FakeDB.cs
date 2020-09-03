@@ -10,6 +10,7 @@ namespace PetShop.Infrastructure.Data
     {
         public static List<Pet> Pets { get; set; }
         public static List<Owner> Owners { get; set; }
+
         private static int petId = 1;
         private static int ownerId = 1;
         private static FakeDB fakeDBInstance;
@@ -18,12 +19,23 @@ namespace PetShop.Infrastructure.Data
             initData();
         }
 
+        /// <summary>
+        /// Adds a pet to the pets list and also gives the parameter p an id
+        /// </summary>
+        /// <param name="p">The pet to be added to the list</param>
+        /// <returns>the pet that was added</returns>
         public Pet AddPetToDatabase(Pet p)
         {
             p.Id = petId++;
             Pets.Add(p);
             return p;
         }
+
+        /// <summary>
+        /// Adds a previous owner to the owners list and also gives the parameter o an id
+        /// </summary>
+        /// <param name="p">The previous owner to be added to the list</param>
+        /// <returns>the previous owner that was added</returns>
         public Owner AddOwnerToDatabase(Owner o)
         {
             o.Id = ownerId++;
@@ -31,6 +43,9 @@ namespace PetShop.Infrastructure.Data
             return o;
         }
 
+        /// <summary>
+        /// Initializes the data on the two lists pets and owners
+        /// </summary>
         private static void initData()
         {
             Pets = new List<Pet>();
@@ -137,6 +152,10 @@ namespace PetShop.Infrastructure.Data
             );
         }
 
+        /// <summary>
+        /// retrieves an instance of this class
+        /// </summary>
+        /// <returns>fakeDBInstance</returns>
         public static FakeDB GetInstance()
         {
             if (fakeDBInstance == null)
