@@ -31,6 +31,7 @@ namespace PetShot.RestAPI
         {
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
+
             services.AddControllers();
         }
 

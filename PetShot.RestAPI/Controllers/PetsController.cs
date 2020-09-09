@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using PetShop.Core.ApplicationServices;
 using PetShop.Core.Entities;
 
@@ -20,6 +21,7 @@ namespace PetShot.WebAPI.Controllers
         {
             _petService = petService;
         }
+
         // GET: api/<PetsController>
         [HttpGet]
         public IEnumerable<Pet> Get()
@@ -36,21 +38,29 @@ namespace PetShot.WebAPI.Controllers
 
         // POST api/<PetsController>
         [HttpPost]
-        public void Post([FromBody] Pet value)
+        public ActionResult<Pet> Post([FromBody] Pet value)
         {
-            _petService.CreatePet(value);
+            if (string.IsNullOrEmpty(value.Name))
+            {
+                return BadRequest("Name is required for a pet");
+            }
+            return _petService.CreatePet(value);
         }
 
         // PUT api/<PetsController>/5
         [HttpPut("{id}")]
-        public void Put([FromBody] Pet value)
+        public ActionResult<Pet> Put(int id, [FromBody] Pet value)
         {
-            _petService.UpdateDetails(value);
+            if (id < 0 || id != value.Id)
+            {
+                return BadRequest("Param id didnt match pet id");
+            }
+            return _petService.UpdateDetails(value);
         }
 
         // DELETE api/<PetsController>/5
         [HttpDelete("{id}")]
-        public void Delete([FromBody] Pet value)
+        public void Delete(int id, [FromBody] Pet value)
         {
             _petService.RemovePet(value);
         }
