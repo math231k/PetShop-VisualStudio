@@ -112,5 +112,14 @@ namespace PetShop.Core.ApplicationServices.Implementation
             }
             return results;
         }
+        /// <summary>
+        /// Returns a pet based on the id
+        /// </summary>
+        /// <param name="id">the id of the pet you want to find</param>
+        /// <returns>the pet found</returns>
+        public Pet GetSpecificPet(int id)
+        {
+            return _PetRepository.GetSpecificPet(id);
+        }
     }
 }

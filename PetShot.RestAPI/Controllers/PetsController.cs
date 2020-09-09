@@ -29,9 +29,9 @@ namespace PetShot.WebAPI.Controllers
 
         // GET api/<PetsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Pet Get(int id)
         {
-            return "value";
+            return _petService.GetSpecificPet(id);
         }
 
         // POST api/<PetsController>
@@ -43,14 +43,16 @@ namespace PetShot.WebAPI.Controllers
 
         // PUT api/<PetsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Pet value)
         {
+            _petService.UpdateDetails(value);
         }
 
         // DELETE api/<PetsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete([FromBody] Pet value)
         {
+            _petService.RemovePet(value);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace PetShop.Core.DomainServices
         public Pet RemovePet(Pet p);
         public Pet CreatePet(Pet p);
         public Pet UpdatePet(Pet p);
+        public Pet GetSpecificPet(int id);
 
     }
 }

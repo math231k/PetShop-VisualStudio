@@ -71,6 +71,22 @@ namespace PetShop.Infrastructure.Data
             }
             return null;
         }
+        /// <summary>
+        /// Returns a specific pet from the database depending on the id
+        /// </summary>
+        /// <param name="id">the id of the pet you want to find</param>
+        /// <returns>the pet found</returns>
+        public Pet GetSpecificPet(int id) 
+        {
+            foreach(Pet p in FakeDB.Pets)
+            {
+                if (p.Id == id)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
 
     }
 }

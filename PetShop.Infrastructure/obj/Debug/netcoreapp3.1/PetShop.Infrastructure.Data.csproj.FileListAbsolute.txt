@@ -26,3 +26,17 @@ C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.csproj.CopyComplete
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.dll
 C:\Users\math2\Documents\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.pdb
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.deps.json
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.dll
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.pdb
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Core.dll
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Core.Entities.dll
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Core.Entities.pdb
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\bin\Debug\netcoreapp3.1\PetShop.Core.pdb
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.csprojAssemblyReference.cache
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.AssemblyInfoInputs.cache
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.AssemblyInfo.cs
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.csproj.CoreCompileInputs.cache
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.csproj.CopyComplete
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.dll
+C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShop.Infrastructure\obj\Debug\netcoreapp3.1\PetShop.Infrastructure.Data.pdb

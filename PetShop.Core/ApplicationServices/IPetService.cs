@@ -52,5 +52,11 @@ namespace PetShop.Core.ApplicationServices
         /// <param name="querry">The name that is searched for</param>
         /// <returns>a List<Pet> where the names match the querry</returns>
         public List<Pet> SearchForPet(String querry);
+        /// <summary>
+        /// Returns a pet based on the id
+        /// </summary>
+        /// <param name="id">the id of the pet you want to find</param>
+        /// <returns>the pet found</returns>
+        public Pet GetSpecificPet(int id);
     }
 }
