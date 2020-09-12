@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PetShop.Core.ApplicationServices;
 using PetShop.Core.Entities;
 
 namespace PetShot.WebAPI.Controllers.Implementation
@@ -12,14 +13,20 @@ namespace PetShot.WebAPI.Controllers.Implementation
     [ApiController]
     public class OwnerController : ControllerBase, IOwnerController
     {
-        public void Delete(int id, [FromBody] Owner value)
+        private readonly IOwnerService _ownerService;
+        public ActionResult<Owner> Delete(int id, [FromBody] Owner value)
         {
-            throw new NotImplementedException();
+            Owner owner = _ownerService.DeleteOwner(value);
+            if (owner == null)
+            {
+                return BadRequest("Pet not found");
+            }
+            return _ownerService.DeleteOwner(value);
         }
 
         public IEnumerable<Owner> Get()
         {
-            throw new NotImplementedException();
+            return _ownerService.ReadOwners();
         }
 
         public Owner Get(int x)
@@ -34,12 +41,12 @@ namespace PetShot.WebAPI.Controllers.Implementation
 
         public ActionResult<Owner> Post([FromBody] Owner value)
         {
-            throw new NotImplementedException();
+            return _ownerService.CreateOwner(value);
         }
 
         public ActionResult<Owner> Put(int id, [FromBody] Owner value)
         {
-            throw new NotImplementedException();
+            return _ownerService.UpdateOwner(value);
         }
     }
 }

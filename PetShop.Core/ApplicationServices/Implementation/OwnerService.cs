@@ -64,5 +64,30 @@ namespace PetShop.Core.ApplicationServices.Implementation
         {
             return _OwnerRepository.UpdateOwner(o);
         }
+
+        public List<Owner> SearchForOwner(string querry)
+        {
+            List<Owner> filteredOwnerList = new List<Owner>();
+            foreach (Owner o in _OwnerRepository.ReadOwners())
+            {
+                if (o.FirstName.Contains(querry.ToLower()))
+                {
+                    filteredOwnerList.Add(o);
+                }
+            }
+            return filteredOwnerList;
+        }
+
+        public Owner GetSpecficOwner(int id)
+        {
+            foreach (Owner o in _OwnerRepository.ReadOwners())
+            {
+                if (o.Id == id)
+                {
+                    return o;
+                }
+            }
+            return null;
+        }
     }
 }

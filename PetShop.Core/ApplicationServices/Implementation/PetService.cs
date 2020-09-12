@@ -105,7 +105,7 @@ namespace PetShop.Core.ApplicationServices.Implementation
             List<Pet> results = new List<Pet>();
             foreach (Pet p in _PetRepository.ReadPets())
             {
-                if (p.Name.Contains(querry))
+                if (p.Name.Contains(querry)&&querry!=null)
                 {
                     results.Add(p);
                 }
