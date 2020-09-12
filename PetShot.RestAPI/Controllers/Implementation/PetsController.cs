@@ -9,11 +9,11 @@ using PetShop.Core.Entities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace PetShot.WebAPI.Controllers
+namespace PetShot.WebAPI.Controllers.Implementation
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PetsController : ControllerBase
+    public class PetsController : ControllerBase, IPetController
     {
         private readonly IPetService _petService;
 
@@ -63,6 +63,12 @@ namespace PetShot.WebAPI.Controllers
         public void Delete(int id, [FromBody] Pet value)
         {
             _petService.RemovePet(value);
+        }
+
+        [HttpGet("byname")]
+        public IEnumerable<Pet> GetFiltered(string name)
+        {
+           return _petService.SearchForPet(name);
         }
     }
 }

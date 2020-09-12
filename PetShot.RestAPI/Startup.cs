@@ -10,10 +10,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using PetShop.Core.ApplicationServices;
 using PetShop.Core.ApplicationServices.Implementation;
 using PetShop.Core.DomainServices;
 using PetShop.Infrastructure.Data;
+using PetShop.Infrastructure.MSSQL.Data;
 
 namespace PetShot.RestAPI
 {
@@ -32,7 +34,12 @@ namespace PetShot.RestAPI
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
 
-            services.AddControllers();
+
+            services.AddControllers().AddNewtonsoftJson(o =>
+            {
+                o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                o.SerializerSettings.MaxDepth = 5;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

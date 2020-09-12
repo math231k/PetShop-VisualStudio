@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4FB074B3-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F08C3171-2820-495B-A145-5040BCEE094D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShop.Infrastructure.MSSQL.Data", "PetShop.Infrastructure.MSSQL.Data\PetShop.Infrastructure.MSSQL.Data.csproj", "{87A4C244-1296-4C2C-AA82-4CDC70325F94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A0B927DC-2B8C-4BDE-A2B9-2860E9194A02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B927DC-2B8C-4BDE-A2B9-2860E9194A02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B927DC-2B8C-4BDE-A2B9-2860E9194A02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A4C244-1296-4C2C-AA82-4CDC70325F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A4C244-1296-4C2C-AA82-4CDC70325F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A4C244-1296-4C2C-AA82-4CDC70325F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A4C244-1296-4C2C-AA82-4CDC70325F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{2B84480F-C534-4320-A301-59401BF65626} = {4FB074B3-3841-454B-A280-4FFB25FA8063}
 		{1F2ACEE0-13F0-47DF-BA6B-4BACD2DE8B0C} = {C8411304-A17B-4C2F-892B-0F46296A0F94}
 		{A0B927DC-2B8C-4BDE-A2B9-2860E9194A02} = {C8411304-A17B-4C2F-892B-0F46296A0F94}
+		{87A4C244-1296-4C2C-AA82-4CDC70325F94} = {F08C3171-2820-495B-A145-5040BCEE094D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1DB3B35-4D94-4E72-BE8E-1B6FB0C6FB8C}

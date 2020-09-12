@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4ZiqkeBLSL9csVtMqYNVC4kRls1ffv86IgHkGrUvWb9eookCL1p5FbgitsoqgYSwHrC7qrvXSGTBT1TVl0nDTg==",
+  "dgSpecHash": "fF0o34IXxpyfJz9SYcIeZ/UnZ49YXeurkVJWhAIUrGg/OhCV1kaIhTRuOWEgKBFMduq5LmPUl1ytkGYeRm+afQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\PetShop.UI.csproj",
+  "projectFilePath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShop.UI\\PetShop.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\math2\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.7\\microsoft.extensions.dependencyinjection.3.1.7.nupkg.sha512",
     "C:\\Users\\math2\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.7\\microsoft.extensions.dependencyinjection.abstractions.3.1.7.nupkg.sha512"

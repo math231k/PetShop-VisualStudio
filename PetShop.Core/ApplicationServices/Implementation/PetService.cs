@@ -11,9 +11,9 @@ namespace PetShop.Core.ApplicationServices.Implementation
     {
         public IPetRepository _PetRepository { get; set; }
 
-        public PetService(IPetRepository petRepository)
+        public PetService(IPetRepository petSQLRepository)
         {
-            _PetRepository = petRepository;
+            _PetRepository = petSQLRepository;
         }
         /// <summary>
         /// Adds a new pet to the database
