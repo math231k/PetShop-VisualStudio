@@ -33,6 +33,14 @@ namespace PetShot.WebAPI.Controllers.Implementation
         [HttpGet("{id}")]
         public ActionResult<Pet> Get(int id)
         {
+            if (id < 1)
+            {
+                return BadRequest("error 400, parametre ''id'' cannot be less than 1");
+            }
+            else if (_petService.GetSpecificPet(id) == null)
+            {
+                return NotFound("Error 404, pet not found");
+            }
             return _petService.GetSpecificPet(id);
         }
 
@@ -53,9 +61,14 @@ namespace PetShot.WebAPI.Controllers.Implementation
         {
             if (id < 0 || id != value.Id)
             {
-                return BadRequest("Param id didnt match pet id");
+                return BadRequest("Error 400 Parameter ''id'' didnt match pet id");
             }
-            return _petService.UpdateDetails(value);
+            else if (_petService.UpdateDetails(value)==null)
+            {
+                return NotFound("Error 404, pet not found");
+            }
+            _petService.UpdateDetails(value);
+            return NoContent();
         }
 
         // DELETE api/<PetsController>/5
@@ -65,7 +78,7 @@ namespace PetShot.WebAPI.Controllers.Implementation
             Pet DeletedPet = _petService.RemovePet(value);
             if(DeletedPet == null)
             {
-                return BadRequest("Pet not found");
+                return BadRequest("error 404, Pet not found");
             }
             return _petService.RemovePet(value);
         }
@@ -75,7 +88,7 @@ namespace PetShot.WebAPI.Controllers.Implementation
         {
             if(name == null)
             {
-                return BadRequest("Name cannot be empty");
+                return BadRequest("error 400, parameter ''Name'' cannot be empty");
             }
            return _petService.SearchForPet(name);
         }
