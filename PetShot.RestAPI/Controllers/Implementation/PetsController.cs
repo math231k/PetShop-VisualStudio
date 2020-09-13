@@ -69,10 +69,14 @@ namespace PetShot.WebAPI.Controllers.Implementation
             }
             return _petService.RemovePet(value);
         }
-        //GET api/<PetsController>/byname?name=L
-        [HttpGet("byname")]
+        //GET api/<PetsController>/PetName?name=L
+        [HttpGet("PetName")]
         public ActionResult<IEnumerable<Pet>> GetFiltered(string name)
         {
+            if(name == null)
+            {
+                return BadRequest("Name cannot be empty");
+            }
            return _petService.SearchForPet(name);
         }
     }

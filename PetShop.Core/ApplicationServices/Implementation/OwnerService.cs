@@ -78,7 +78,8 @@ namespace PetShop.Core.ApplicationServices.Implementation
             return filteredOwnerList;
         }
 
-        public Owner GetSpecficOwner(int id)
+        public Owner GetSpecificOwner(int id)
+        
         {
             foreach (Owner o in _OwnerRepository.ReadOwners())
             {

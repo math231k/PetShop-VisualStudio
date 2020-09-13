@@ -14,6 +14,11 @@ namespace PetShot.WebAPI.Controllers.Implementation
     public class OwnerController : ControllerBase, IOwnerController
     {
         private readonly IOwnerService _ownerService;
+
+        public OwnerController(IOwnerService ownerService)
+        {
+            _ownerService = ownerService;
+        }
         public ActionResult<Owner> Delete(int id, [FromBody] Owner value)
         {
             Owner owner = _ownerService.DeleteOwner(value);
@@ -23,27 +28,27 @@ namespace PetShot.WebAPI.Controllers.Implementation
             }
             return _ownerService.DeleteOwner(value);
         }
-
-        public IEnumerable<Owner> Get()
+        [HttpGet]
+        public ActionResult<IEnumerable<Owner>> Get()
         {
             return _ownerService.ReadOwners();
         }
-
-        public Owner Get(int x)
+        [HttpGet("{id}")]
+        public ActionResult<Owner> Get(int id)
         {
-            throw new NotImplementedException();
+            return _ownerService.GetSpecificOwner(id);
         }
-
-        public IEnumerable<Pet> GetFiltered()
+        [HttpGet("byname")]
+        public ActionResult<IEnumerable<Owner>> GetFiltered(string querry)
         {
-            throw new NotImplementedException();
+            return _ownerService.SearchForOwner(querry);
         }
-
+        [HttpDelete("{id}")]
         public ActionResult<Owner> Post([FromBody] Owner value)
         {
             return _ownerService.CreateOwner(value);
         }
-
+        [HttpPut("{id}")]
         public ActionResult<Owner> Put(int id, [FromBody] Owner value)
         {
             return _ownerService.UpdateOwner(value);
