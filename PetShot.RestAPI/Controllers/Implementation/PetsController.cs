@@ -24,14 +24,14 @@ namespace PetShot.WebAPI.Controllers.Implementation
 
         // GET: api/<PetsController>
         [HttpGet]
-        public IEnumerable<Pet> Get()
+        public ActionResult<IEnumerable<Pet>> Get()
         {
             return _petService.GetPets();
         }
 
         // GET api/<PetsController>/5
         [HttpGet("{id}")]
-        public Pet Get(int id)
+        public ActionResult<Pet> Get(int id)
         {
             return _petService.GetSpecificPet(id);
         }
@@ -60,13 +60,13 @@ namespace PetShot.WebAPI.Controllers.Implementation
 
         // DELETE api/<PetsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id, [FromBody] Pet value)
+        public ActionResult<Pet> Delete(int id, [FromBody] Pet value)
         {
-            _petService.RemovePet(value);
+            return _petService.RemovePet(value);
         }
 
         [HttpGet("byname")]
-        public IEnumerable<Pet> GetFiltered(string name)
+        public ActionResult<IEnumerable<Pet>> GetFiltered(string name)
         {
            return _petService.SearchForPet(name);
         }
