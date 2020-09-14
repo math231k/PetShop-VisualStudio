@@ -9,11 +9,11 @@ namespace PetShot.WebAPI.Controllers
 {
     interface IOwnerController
     {
-        public ActionResult<IEnumerable<Owner>> Get();
-        public ActionResult<Owner> Get(int x);
+        public IEnumerable<Owner> Get();
+        public Owner Get(int x);
         public ActionResult<Owner> Post([FromBody] Owner value);
         public ActionResult<Owner> Put(int id, [FromBody] Owner value);
-        public ActionResult<Owner> Delete(int id, [FromBody] Owner value);
-        public ActionResult<IEnumerable<Owner>> GetFiltered(string querry);
+        public void Delete(int id, [FromBody] Owner value);
+        public IEnumerable<Pet> GetFiltered();
     }
 }

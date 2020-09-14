@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PetShop.Core.ApplicationServices;
 using PetShop.Core.Entities;
 
 namespace PetShot.WebAPI.Controllers.Implementation
@@ -13,45 +12,34 @@ namespace PetShot.WebAPI.Controllers.Implementation
     [ApiController]
     public class OwnerController : ControllerBase, IOwnerController
     {
-        private readonly IOwnerService _ownerService;
+        public void Delete(int id, [FromBody] Owner value)
+        {
+            throw new NotImplementedException();
+        }
 
-        public OwnerController(IOwnerService ownerService)
+        public IEnumerable<Owner> Get()
         {
-            _ownerService = ownerService;
+            throw new NotImplementedException();
         }
-        public ActionResult<Owner> Delete(int id, [FromBody] Owner value)
+
+        public Owner Get(int x)
         {
-            Owner owner = _ownerService.DeleteOwner(value);
-            if (owner == null)
-            {
-                return BadRequest("Pet not found");
-            }
-            return _ownerService.DeleteOwner(value);
+            throw new NotImplementedException();
         }
-        [HttpGet]
-        public ActionResult<IEnumerable<Owner>> Get()
+
+        public IEnumerable<Pet> GetFiltered()
         {
-            return _ownerService.ReadOwners();
+            throw new NotImplementedException();
         }
-        [HttpGet("{id}")]
-        public ActionResult<Owner> Get(int id)
-        {
-            return _ownerService.GetSpecificOwner(id);
-        }
-        [HttpGet("byname")]
-        public ActionResult<IEnumerable<Owner>> GetFiltered(string querry)
-        {
-            return _ownerService.SearchForOwner(querry);
-        }
-        [HttpDelete("{id}")]
+
         public ActionResult<Owner> Post([FromBody] Owner value)
         {
-            return _ownerService.CreateOwner(value);
+            throw new NotImplementedException();
         }
-        [HttpPut("{id}")]
+
         public ActionResult<Owner> Put(int id, [FromBody] Owner value)
         {
-            return _ownerService.UpdateOwner(value);
+            throw new NotImplementedException();
         }
     }
 }

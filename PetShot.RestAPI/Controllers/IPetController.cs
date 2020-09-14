@@ -9,12 +9,12 @@ namespace PetShot.WebAPI.Controllers
 {
     interface IPetController
     {
-        public ActionResult<IEnumerable<Pet>> Get();
-        public ActionResult<Pet> Get(int x);
+        public IEnumerable<Pet> Get();
+        public Pet Get(int x);
         public ActionResult<Pet> Post([FromBody] Pet value);
         public ActionResult<Pet> Put(int id, [FromBody] Pet value);
-        public ActionResult<Pet> Delete(int id, [FromBody] Pet value);
-        public ActionResult<IEnumerable<Pet>> GetFiltered(string name);
+        public void Delete(int id, [FromBody] Pet value);
+        public IEnumerable<Pet> GetFiltered(string name);
 
 
     }
