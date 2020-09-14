@@ -24,15 +24,23 @@ namespace PetShot.WebAPI.Controllers.Implementation
 
         // GET: api/<PetsController>
         [HttpGet]
-        public IEnumerable<Pet> Get()
+        public ActionResult<IEnumerable<Pet>> Get()
         {
             return _petService.GetPets();
         }
 
         // GET api/<PetsController>/5
         [HttpGet("{id}")]
-        public Pet Get(int id)
+        public ActionResult<Pet> Get(int id)
         {
+            if (id < 1)
+            {
+                return BadRequest("error 400, parametre ''id'' cannot be less than 1");
+            }
+            else if (_petService.GetSpecificPet(id) == null)
+            {
+                return NotFound("Error 404, pet not found");
+            }
             return _petService.GetSpecificPet(id);
         }
 
@@ -53,21 +61,35 @@ namespace PetShot.WebAPI.Controllers.Implementation
         {
             if (id < 0 || id != value.Id)
             {
-                return BadRequest("Param id didnt match pet id");
+                return BadRequest("Error 400 Parameter ''id'' didnt match pet id");
             }
-            return _petService.UpdateDetails(value);
+            else if (_petService.UpdateDetails(value)==null)
+            {
+                return NotFound("Error 404, pet not found");
+            }
+            _petService.UpdateDetails(value);
+            return NoContent();
         }
 
         // DELETE api/<PetsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id, [FromBody] Pet value)
+        public ActionResult<Pet> Delete(int id, [FromBody] Pet value)
         {
-            _petService.RemovePet(value);
+            Pet DeletedPet = _petService.RemovePet(value);
+            if(DeletedPet == null)
+            {
+                return BadRequest("error 404, Pet not found");
+            }
+            return _petService.RemovePet(value);
         }
-
-        [HttpGet("byname")]
-        public IEnumerable<Pet> GetFiltered(string name)
+        //GET api/<PetsController>/PetName?name=L
+        [HttpGet("PetName")]
+        public ActionResult<IEnumerable<Pet>> GetFiltered(string name)
         {
+            if(name == null)
+            {
+                return BadRequest("error 400, parameter ''Name'' cannot be empty");
+            }
            return _petService.SearchForPet(name);
         }
     }

@@ -34,6 +34,9 @@ namespace PetShot.RestAPI
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
 
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IOwnerService, OwnerService>();
+
 
             services.AddControllers().AddNewtonsoftJson(o =>
             {
