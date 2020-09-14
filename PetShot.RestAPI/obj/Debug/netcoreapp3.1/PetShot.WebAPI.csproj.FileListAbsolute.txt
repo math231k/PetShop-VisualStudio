@@ -118,6 +118,4 @@ C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\b
 C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\bin\Debug\netcoreapp3.1\PetShop.Infrastructure.MSSQL.Data.dll
 C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\bin\Debug\netcoreapp3.1\PetShop.Infrastructure.MSSQL.Data.pdb
-C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\obj\Debug\netcoreapp3.1\PetShot.WebAPI.csproj.CoreCompileInputs.cache
-C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\obj\Debug\netcoreapp3.1\PetShot.WebAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\math2\OneDrive\Dokumenter\GitHub\PetShop-VisualStudio\PetShot.RestAPI\bin\Debug\netcoreapp3.1\Properties\ServiceDependencies\BirinsPetShop - Web Deploy\profile.arm.json

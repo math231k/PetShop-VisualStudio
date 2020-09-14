@@ -37,6 +37,16 @@ namespace PetShot.RestAPI
             services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IOwnerService, OwnerService>();
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1",
+                    new Microsoft.OpenApi.Models.OpenApiInfo 
+                    { 
+                        Title = "Swagger demo api",
+                        Description = "Demo",
+                        Version = "v1"
+                    });
+            });
 
             services.AddControllers().AddNewtonsoftJson(o =>
             {
@@ -62,6 +72,12 @@ namespace PetShot.RestAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger demo API");
             });
         }
     }
