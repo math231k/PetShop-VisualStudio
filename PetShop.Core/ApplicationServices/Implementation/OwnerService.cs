@@ -41,7 +41,7 @@ namespace PetShop.Core.ApplicationServices.Implementation
         /// </summary>
         /// <param name="p">The pet used to find the previous owner</param>
         /// <returns>The previous owner connected to the pet</returns>
-        public Owner getOwner(Pet p)
+        public Owner GetOwnerByPet(Pet p)
         {
                 return _OwnerRepository.GetOwner(p);
         }
@@ -63,6 +63,35 @@ namespace PetShop.Core.ApplicationServices.Implementation
         public Owner UpdateOwner(Owner o)
         {
             return _OwnerRepository.UpdateOwner(o);
+        }
+        /// <summary>
+        /// Returns an owner based on the id input
+        /// </summary>
+        /// <param name="id">the id of the owner you want to find</param>
+        /// <returns>the owner matching the id</returns>
+        public Owner GetOwnerById(int id)
+        {
+            foreach (Owner o in _OwnerRepository.ReadOwners())
+            {
+                if (id == o.Id)
+                {
+                    return o;
+                }
+            }
+            return null;
+        }
+
+        public List<Owner> SearchForOwner(string querry)
+        {
+            List<Owner> results = new List<Owner>();
+            foreach (Owner o in _OwnerRepository.ReadOwners())
+            {
+                if (o.FirstName.Contains(querry))
+                {
+                    results.Add(o);
+                }
+            }
+            return results;
         }
     }
 }

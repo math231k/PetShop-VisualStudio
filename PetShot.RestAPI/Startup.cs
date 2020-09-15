@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,21 +33,28 @@ namespace PetShot.RestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            FakeDB.initData();
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPetService, PetService>();
 
             services.AddScoped<IOwnerRepository, OwnerRepository>();
             services.AddScoped<IOwnerService, OwnerService>();
 
+            services.AddScoped<IPetTypeRepository, PetTypeRepository>();
+            services.AddScoped<IPetTypeService, PetTypeService>();
+
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1",
                     new Microsoft.OpenApi.Models.OpenApiInfo 
                     { 
-                        Title = "Swagger demo api",
+                        Title = "Swagger Demo api",
                         Description = "Demo",
                         Version = "v1"
                     });
+                var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+                //options.IncludeXmlComments(filePath);
             });
 
             services.AddControllers().AddNewtonsoftJson(o =>
@@ -77,7 +86,8 @@ namespace PetShot.RestAPI
             app.UseSwagger();
 
             app.UseSwaggerUI(options => {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger demo API");
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Demo API");
+                options.RoutePrefix = "";
             });
         }
     }

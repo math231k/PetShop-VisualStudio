@@ -7,8 +7,14 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
 
+  <PropertyGroup>
+	  <GenerateDocumentationFile>netcoreapp3.1</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\PetShop.Core.Entities\PetShop.Core.Entities.csproj" />
     <ProjectReference Include="..\PetShop.Infrastructure.MSSQL.Data\PetShop.Infrastructure.MSSQL.Data.csproj" />

@@ -413,7 +413,7 @@ namespace PetShop.UI
         /// <param name="p">The previous owner just created</param>
         public void PrintPrevOwner(Pet p)
         {
-            Owner owner = _OwnerService.getOwner(p);
+            Owner owner = _OwnerService.GetOwnerByPet(p);
             Console.Clear();
             Console.WriteLine(" ____________________ ");
             Console.WriteLine("|                    |");

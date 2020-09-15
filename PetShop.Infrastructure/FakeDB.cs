@@ -10,13 +10,15 @@ namespace PetShop.Infrastructure.Data
     {
         public static List<Pet> Pets { get; set; }
         public static List<Owner> Owners { get; set; }
+        public static List<PetType> PetTypes { get; set; }
 
         private static int petId = 1;
         private static int ownerId = 1;
+        private static int PetTypeId = 1;
         private static FakeDB fakeDBInstance;
         private FakeDB()
         {
-            initData();
+            //initData();
         }
 
         /// <summary>
@@ -46,10 +48,11 @@ namespace PetShop.Infrastructure.Data
         /// <summary>
         /// Initializes the data on the two lists pets and owners
         /// </summary>
-        private static void initData()
+        public static void initData()
         {
             Pets = new List<Pet>();
             Owners = new List<Owner>();
+            PetTypes = new List<PetType>();
             Pets.Add(new Pet
             {
                 Id = petId++,
@@ -150,6 +153,30 @@ namespace PetShop.Infrastructure.Data
 
             }
             );
+
+            PetTypes.Add(new PetType
+            {
+                Id = PetTypeId++,
+                TypeName = "dog"
+            });
+
+            PetTypes.Add(new PetType
+            {
+                Id = PetTypeId++,
+                TypeName = "cat"
+            });
+
+            PetTypes.Add(new PetType
+            {
+                Id = PetTypeId++,
+                TypeName = "hamster"
+            });
+
+            PetTypes.Add(new PetType
+            {
+                Id = PetTypeId++,
+                TypeName = "bird"
+            });
         }
 
         /// <summary>

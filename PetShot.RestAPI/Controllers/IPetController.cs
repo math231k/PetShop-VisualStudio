@@ -13,7 +13,7 @@ namespace PetShot.WebAPI.Controllers
         public ActionResult<Pet> Get(int x);
         public ActionResult<Pet> Post([FromBody] Pet value);
         public ActionResult<Pet> Put(int id, [FromBody] Pet value);
-        public ActionResult<Pet> Delete(int id, [FromBody] Pet value);
+        public ActionResult<Pet> Delete(int id);
         public ActionResult<IEnumerable<Pet>> GetFiltered(string name);
 
 

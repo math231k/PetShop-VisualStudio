@@ -10,7 +10,7 @@ namespace PetShot.WebAPI.Controllers
     interface IOwnerController
     {
         public ActionResult<IEnumerable<Owner>> Get();
-        public ActionResult<Owner> Get(int id);
+        public ActionResult<Owner> GetById(int id);
         public ActionResult<Owner> Post([FromBody] Owner value);
         public ActionResult<Owner> Put(int id, [FromBody] Owner value);
         public ActionResult<Owner> Delete(int id);

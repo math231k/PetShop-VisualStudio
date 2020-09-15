@@ -16,24 +16,41 @@ namespace PetShot.WebAPI.Controllers.Implementation
     public class PetsController : ControllerBase, IPetController
     {
         private readonly IPetService _petService;
-
+        private List<Pet> PetsReferance = new List<Pet>();
         public PetsController(IPetService petService)
         {
             _petService = petService;
+            PetsReferance = _petService.GetPets();
         }
 
-        // GET: api/<PetsController>
+        
+        /// <summary>
+        /// GET: api/<PetsController>
+        /// </summary>
+        /// <returns>An ActionResult<IEnumerable<Pet>></returns>
         [HttpGet]
         public ActionResult<IEnumerable<Pet>> Get()
         {
-            return _petService.GetPets();
+            if (PetsReferance.Count == 0)
+            {
+                return NoContent();
+            }
+            return Ok(_petService.GetPets());
         }
 
         // GET api/<PetsController>/5
         [HttpGet("{id}")]
         public ActionResult<Pet> Get(int id)
         {
-            return _petService.GetSpecificPet(id);
+            if (id < 1)
+            {
+                return BadRequest("Error 400, id cannot be less than 1");
+            }
+            else if (_petService.GetSpecificPet(id) == null)
+            {
+                return NotFound("Error 404, pet not found");
+            }
+            return Ok(_petService.GetSpecificPet(id));
         }
 
         // POST api/<PetsController>
@@ -44,31 +61,58 @@ namespace PetShot.WebAPI.Controllers.Implementation
             {
                 return BadRequest("Name is required for a pet");
             }
-            return _petService.CreatePet(value);
+            Pet p = _petService.CreatePet(value);
+            Fetch();
+            return StatusCode(201, p);
         }
 
         // PUT api/<PetsController>/5
         [HttpPut("{id}")]
         public ActionResult<Pet> Put(int id, [FromBody] Pet value)
         {
-            if (id < 0 || id != value.Id)
+            if (id < 0)
             {
-                return BadRequest("Param id didnt match pet id");
+                return NotFound("Error 404, pet not found");
             }
-            return _petService.UpdateDetails(value);
+            else if (String.IsNullOrEmpty(value.Name))
+            {
+                return BadRequest("Error 400, Pet needs a name before you update");
+            }
+            _petService.UpdateDetails(value);
+            Fetch();
+            return Accepted();
         }
 
         // DELETE api/<PetsController>/5
         [HttpDelete("{id}")]
-        public ActionResult<Pet> Delete(int id, [FromBody] Pet value)
+        public ActionResult<Pet> Delete(int id)
         {
-            return _petService.RemovePet(value);
+            if (id<1)
+            {
+                return NotFound("Error 404, pet not found");
+            }
+            _petService.RemovePet(PetsReferance.ElementAt(id - 1));
+            Fetch();
+            return Accepted();
         }
-
+        // GET api/<PetsController>/byname?name=a
         [HttpGet("byname")]
         public ActionResult<IEnumerable<Pet>> GetFiltered(string name)
         {
-           return _petService.SearchForPet(name);
+            if (String.IsNullOrEmpty(name))
+            {
+                return BadRequest("Please enter a name to search for");
+            }
+            else if (_petService.SearchForPet(name).Count == 0)
+            {
+                return NoContent();
+            }
+            return Ok(_petService.SearchForPet(name));
+        }
+
+        private void Fetch()
+        {
+            PetsReferance = _petService.GetPets();
         }
     }
 }
