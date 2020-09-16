@@ -8,24 +8,40 @@ namespace PetShop.Infrastructure.Data
 {
     public class PetTypeRepository : IPetTypeRepository
     {
+        FakeDB Database = FakeDB.GetInstance();
         public PetType CreatePetType(PetType pt)
         {
-            throw new NotImplementedException();
+            return Database.AddPetTypeToDatabase(pt);
         }
 
         public PetType DeletePetType(PetType pt)
         {
-            throw new NotImplementedException();
+            foreach (PetType pett in FakeDB.PetTypes)
+            {
+                if (pett.Id == pt.Id)
+                {
+                    FakeDB.PetTypes.Remove(pett);
+                    return pt;
+                }
+            }
+            return null;
         }
 
         public List<PetType> ReadPetType()
         {
-            throw new NotImplementedException();
+            return FakeDB.PetTypes;
         }
 
         public PetType UpdatePetType(PetType pt)
         {
-            throw new NotImplementedException();
+            foreach (PetType pett in FakeDB.PetTypes)
+            {
+                if (pett.Id == pt.Id)
+                {
+                    pett.TypeName = pt.TypeName;
+                }
+            }
+            return null;
         }
     }
 }

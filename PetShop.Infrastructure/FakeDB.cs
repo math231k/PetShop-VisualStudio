@@ -45,6 +45,13 @@ namespace PetShop.Infrastructure.Data
             return o;
         }
 
+        public PetType AddPetTypeToDatabase(PetType pt)
+        {
+            pt.Id = PetTypeId++;
+            PetTypes.Add(pt);
+            return pt;
+        }
+
         /// <summary>
         /// Initializes the data on the two lists pets and owners
         /// </summary>
