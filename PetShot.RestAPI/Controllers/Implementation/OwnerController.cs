@@ -82,6 +82,7 @@ namespace PetShot.WebAPI.Controllers.Implementation
             {
                 return BadRequest("Error 400, An owner needs a name and a phonenumber");
             }
+            value.Id = id;
             return Accepted(_OwnerService.UpdateOwner(value));
         }
 

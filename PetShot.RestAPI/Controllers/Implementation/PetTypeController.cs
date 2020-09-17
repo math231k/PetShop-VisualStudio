@@ -70,6 +70,7 @@ namespace PetShot.WebAPI.Controllers.Implementation
             {
                 return BadRequest("Error 400, Pet needs a name before you update");
             }
+            value.Id = id;
             _petTypeService.UpdatePetType(value);
             Fetch();
             return Accepted();
