@@ -35,7 +35,7 @@ namespace PetShop.Core.ApplicationServices
         /// </summary>
         /// <param name="type">The species of pet you would like to see</param>
         /// <returns>A list<Pet> of all elements beloning to a certain species</returns>
-        public List<Pet> GetAllTypes(Enum type);
+        public List<Pet> GetAllTypes(int typeId);
         /// <summary>
         /// Return the five cheepest pets stored in the database
         /// </summary>

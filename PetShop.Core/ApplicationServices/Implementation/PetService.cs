@@ -55,12 +55,12 @@ namespace PetShop.Core.ApplicationServices.Implementation
         /// </summary>
         /// <param name="type">The type searched for</param>
         /// <returns>List with all pets of type</returns>
-        public List<Pet> GetAllTypes(Enum type)
+        public List<Pet> GetAllTypes(int typeId)
         {
             List<Pet> typePets = new List<Pet>();
             foreach(Pet p in _PetRepository.ReadPets())
             {
-                if (p.Type == type)
+                if (p.TypeId == typeId)
                 {
                     typePets.Add(p);
                 }

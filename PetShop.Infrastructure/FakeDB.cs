@@ -68,7 +68,7 @@ namespace PetShop.Infrastructure.Data
                 OwnerId = 1,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
-                Type = Pet.Types.dog,
+                TypeId = 1,
                 price = 9000
             }
             );
@@ -81,7 +81,7 @@ namespace PetShop.Infrastructure.Data
                 OwnerId = 2,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
-                Type = Pet.Types.dog,
+                TypeId = 2,
                 price = 1500
             }
             );
@@ -94,7 +94,7 @@ namespace PetShop.Infrastructure.Data
                 OwnerId = 1,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
-                Type = Pet.Types.dog,
+                TypeId = 1,
                 price = 6000
             }
             );
@@ -107,7 +107,7 @@ namespace PetShop.Infrastructure.Data
                 OwnerId = 2,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
-                Type = Pet.Types.dog,
+                TypeId = 2,
                 price = 9000
             }
             );
@@ -120,7 +120,7 @@ namespace PetShop.Infrastructure.Data
                 OwnerId = 1,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
-                Type = Pet.Types.dog,
+                TypeId = 1,
                 price = 5700
             }
             );
@@ -133,7 +133,7 @@ namespace PetShop.Infrastructure.Data
                 OwnerId = 2,
                 BirthDate = DateTime.Parse("jun 8, 1954"),
                 SoldDate = DateTime.Parse("nov 3, 1957"),
-                Type = Pet.Types.dog,
+                TypeId = 2,
                 price = 12000
             });
 

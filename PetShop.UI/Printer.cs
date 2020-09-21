@@ -227,7 +227,7 @@ namespace PetShop.UI
             int ownerId = 0;
             string name = "";
             DateTime birthdate = DateTime.UtcNow;
-            string type = "default";
+            int type = 1;
             string colour = "";
             DateTime soldBy = DateTime.UtcNow;
             double price = 0;
@@ -246,7 +246,7 @@ namespace PetShop.UI
                 Console.WriteLine("\nEnter a BirthDate\nFormat: 'jan 1, 1999' or 'MM-dd-yyyy'\n");
                 birthdate = DateTime.Parse(Console.ReadLine());
                 Console.WriteLine("\nEnter what kind of animal this is\nEither dog, cat, hamster, fish, bird, snake or tarantula\n");
-                type = Console.ReadLine();
+                type = int.Parse(Console.ReadLine());
                 Console.WriteLine("\nEnter the colour of the animal\n");
                 colour = Console.ReadLine();
                 Console.WriteLine("\nEnter what date it was sold\nFormat: 'jan 1, 1999' or 'MM-dd-yyyy'\n");
@@ -286,7 +286,7 @@ namespace PetShop.UI
                     OwnerId = ownerId,
                     price = price,
                     SoldDate = soldBy,
-                    Type = (Enum)Enum.Parse(typeof(Pet.Types), type.ToLower())
+                    TypeId = type
                 };
             }
             catch(Exception)
@@ -350,7 +350,7 @@ namespace PetShop.UI
             Console.WriteLine("");
             Console.WriteLine("Index: " + result.Id);
             Console.WriteLine("Name: " + result.Name);
-            Console.WriteLine("Species: " + result.Type);
+            Console.WriteLine("Species: " + result.TypeId);
             Console.WriteLine("Colour(s): " + result.Color);
             Console.WriteLine("Birthdate: " + result.BirthDate);
             Console.WriteLine("Selling date: " + result.SoldDate);

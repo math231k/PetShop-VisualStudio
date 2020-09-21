@@ -63,7 +63,7 @@ namespace PetShop.Infrastructure.Data
                     pet.OwnerId = p.OwnerId;
                     pet.price = p.price;
                     pet.SoldDate = p.SoldDate;
-                    pet.Type = p.Type;
+                    pet.TypeId = p.TypeId;
                     pet.Color = p.Color;
                     pet.BirthDate = p.BirthDate;
                     return pet;
