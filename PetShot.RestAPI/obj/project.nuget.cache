@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HESnztRqm8CgWSXKkG51HPKFy7y6IUq9zojbAu9qkw3ptWYa8m2bKidkwIz21uya3C/L3g6tRBajdwWu7rTE7w==",
+  "dgSpecHash": "rvaRDKC1/kQNGXzvHFphcjB1qc6X/KmIF22yLE9ZeNlasvQLlntRcaQ5vRJSjEM7YfDyALJODGCVQAcyQE4AUw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\math2\\Documents\\GitHub\\PetShop-VisualStudio\\PetShot.RestAPI\\PetShot.WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\math2\\OneDrive\\Dokumenter\\GitHub\\PetShop-VisualStudio\\PetShot.RestAPI\\PetShot.WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\math2\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.8\\microsoft.aspnetcore.jsonpatch.3.1.8.nupkg.sha512",
     "C:\\Users\\math2\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.8\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.8.nupkg.sha512",
