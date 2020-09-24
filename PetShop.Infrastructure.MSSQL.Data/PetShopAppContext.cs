@@ -7,15 +7,15 @@ using System.Text;
 
 namespace PetShop.Infrastructure.MSSQL.Data
 {
-    public class PetShopAppContext: DbContext
+    public class PetShopAppContext : DbContext
     {
-        public DbSet<Pet> pets { get; set; }
-        public DbSet<Owner> owners { get; set; }
+        public PetShopAppContext(DbContextOptions<PetShopAppContext> opt)
+            : base(opt){ }
 
-        public PetShopAppContext(DbContextOptions<PetShopAppContext> opt): base(opt) 
-        { 
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<Owner> Owners { get; set; }
+        public DbSet<PetType> PetTypes{ get; set;}
 
-        }
-
+        
     }
 }

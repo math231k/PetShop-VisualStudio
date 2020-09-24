@@ -8,7 +8,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
 {
     public class PetSQLRepository : IPetRepository
     {
-        private PetShopAppContext _ctx;
+        readonly PetShopAppContext _ctx;
         public PetSQLRepository(PetShopAppContext ctx)
         {
             _ctx = ctx;
@@ -20,7 +20,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>The pet that was created</returns>
         public Pet CreatePet(Pet p)
         {
-            var petCreated = _ctx.Add(p);
+            var petCreated = _ctx.Pets.Add(p);
             _ctx.SaveChanges();
             return petCreated.Entity;
         }
@@ -32,7 +32,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns></returns>
         public Pet GetSpecificPet(int id)
         {
-            throw new NotImplementedException();
+            return _ctx.Pets.FirstOrDefault(p => p.Id == id);
         }
         /// <summary>
         /// Reads all pets in the database
@@ -40,7 +40,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>all pets in the database as a List<Pet></returns>
         public List<Pet> ReadPets()
         {
-            return _ctx.pets.ToList();
+            return _ctx.Pets.ToList();
         }
         /// <summary>
         /// Removes a pet from the database
@@ -59,7 +59,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>The pet updated</returns>
         public Pet UpdatePet(Pet p)
         {
-            var updatedPet = _ctx.pets.Update(p);
+            var updatedPet = _ctx.Pets.Update(p);
             _ctx.SaveChanges();
             return updatedPet.Entity;
         }
