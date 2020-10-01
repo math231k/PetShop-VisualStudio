@@ -49,7 +49,9 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>the removed pet</returns>
         public Pet RemovePet(Pet p)
         {
-            throw new NotImplementedException();
+            var removedPet = _ctx.Pets.Remove(p).Entity;
+            _ctx.SaveChanges();
+            return removedPet;
         }
 
         /// <summary>

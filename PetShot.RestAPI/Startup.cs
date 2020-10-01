@@ -3,16 +3,22 @@ using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using PetShop.Core.ApplicationServices;
 using PetShop.Core.ApplicationServices.Implementation;
 using PetShop.Core.DomainServices;
+using PetShop.Infrastructure.Data;
 using PetShop.Infrastructure.MSSQL.Data;
 using PetShop.Infrastructure.MSSQL.Data.repositories;
+using OwnerRepository = PetShop.Infrastructure.MSSQL.Data.repositories.OwnerRepository;
+using PetTypeRepository = PetShop.Infrastructure.MSSQL.Data.repositories.PetTypeRepository;
 
 namespace PetShot.RestAPI
 {
@@ -30,9 +36,21 @@ namespace PetShot.RestAPI
         {
             //FakeDB.initData();
 
-            services.AddDbContext<PetShopAppContext>(
-                opt => opt.UseInMemoryDatabase("PetShopDB")
+            var loggerFactory = LoggerFactory.Create(builder =>
+            {
+                builder.AddConsole();
+            });
+
+            services.AddDbContext<PetShopAppContext>
+                (
+                opt =>
+
+                    opt.UseLoggerFactory(loggerFactory).
+                    AddInterceptors(new DBInterceptor()).
+                    UseSqlite("Data Source=PetApp.db"),
+                    ServiceLifetime.Transient
                 );
+            
 
             services.AddScoped<IPetRepository, PetSQLRepository>();
             services.AddScoped<IPetService, PetService>();
@@ -54,7 +72,6 @@ namespace PetShot.RestAPI
                     });
                 var fileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
-                //options.IncludeXmlComments(filePath);
             });
 
             services.AddControllers().AddNewtonsoftJson(o =>
@@ -70,7 +87,19 @@ namespace PetShot.RestAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                //Hvis det køres lokalt ryk using ud af In Development
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<PetShopAppContext>();
+                    //ctx.Database.EnsureDeleted();
+                    //ctx.Database.EnsureCreated();
+                    var petRepository = scope.ServiceProvider.GetService<IPetRepository>();
+                    var ownerRepository = scope.ServiceProvider.GetService<IOwnerRepository>();
+                    var petTypeRepository = scope.ServiceProvider.GetService<IPetTypeRepository>();
+                }
             }
+            
 
             app.UseHttpsRedirection();
 
