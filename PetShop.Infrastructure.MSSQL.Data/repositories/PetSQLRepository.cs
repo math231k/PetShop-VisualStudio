@@ -32,7 +32,8 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns></returns>
         public Pet GetSpecificPet(int id)
         {
-            throw new NotImplementedException();
+            Pet result = _ctx.Pets.Find(id);
+            return result;
         }
         /// <summary>
         /// Reads all pets in the database
@@ -40,7 +41,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>all pets in the database as a List<Pet></returns>
         public List<Pet> ReadPets()
         {
-            return _ctx.pets.ToList();
+            return _ctx.Pets.ToList();
         }
         /// <summary>
         /// Removes a pet from the database
@@ -49,7 +50,9 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>the removed pet</returns>
         public Pet RemovePet(Pet p)
         {
-            throw new NotImplementedException();
+            var removedPet = _ctx.Pets.Remove(p).Entity;
+            _ctx.SaveChanges();
+            return removedPet;
         }
 
         /// <summary>
@@ -59,7 +62,7 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>The pet updated</returns>
         public Pet UpdatePet(Pet p)
         {
-            var updatedPet = _ctx.pets.Update(p);
+            var updatedPet = _ctx.Pets.Update(p);
             _ctx.SaveChanges();
             return updatedPet.Entity;
         }
