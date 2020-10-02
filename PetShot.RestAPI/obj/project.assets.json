@@ -143,6 +143,19 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
+      "Microsoft.EntityFrameworkCore.Sqlite/3.1.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Sqlite.Core": "3.1.8",
+          "SQLitePCLRaw.bundle_e_sqlite3": "2.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore.Sqlite.Core/3.1.8": {
         "type": "package",
         "dependencies": {
@@ -341,6 +354,22 @@
           "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "SQLitePCLRaw.bundle_e_sqlite3/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.2",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.2",
+          "SQLitePCLRaw.provider.dynamic_cdecl": "2.0.2"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/SQLitePCLRaw.batteries_v2.dll": {},
+          "lib/netcoreapp3.0/SQLitePCLRaw.nativelibrary.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/SQLitePCLRaw.batteries_v2.dll": {},
+          "lib/netcoreapp3.0/SQLitePCLRaw.nativelibrary.dll": {}
+        }
+      },
       "SQLitePCLRaw.core/2.0.2": {
         "type": "package",
         "dependencies": {
@@ -351,6 +380,77 @@
         },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/alpine-x64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "alpine-x64"
+          },
+          "runtimes/linux-arm/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-armel/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-armel"
+          },
+          "runtimes/linux-musl-x64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-musl-x64"
+          },
+          "runtimes/linux-x64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x86/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-x86"
+          },
+          "runtimes/osx-x64/native/libe_sqlite3.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-arm"
+          },
+          "runtimes/win-arm64/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "SQLitePCLRaw.provider.dynamic_cdecl/2.0.2": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll": {}
         }
       },
       "Swashbuckle.AspNetCore/5.5.1": {
@@ -778,6 +878,19 @@
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
+    "Microsoft.EntityFrameworkCore.Sqlite/3.1.8": {
+      "sha512": "AgEZiUoylSiox7On1nLJb1Ao0dx5LpGiLBLtYnzQeZzlZIHcjjZEQhgF7V4+4cwXF2DRuT4Ekg+akXe25P84+g==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.sqlite/3.1.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/_._",
+        "microsoft.entityframeworkcore.sqlite.3.1.8.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlite.nuspec"
+      ]
+    },
     "Microsoft.EntityFrameworkCore.Sqlite.Core/3.1.8": {
       "sha512": "YBMXMuN/VVYVVE7XIr4ZMtIjnv6kZk/oZit1DSapw/ZssUaHpjgHSol/aa3Fdc64SpfStzdWmleXAzIs2CYBfA==",
       "type": "package",
@@ -1085,6 +1198,24 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
+    "SQLitePCLRaw.bundle_e_sqlite3/2.0.2": {
+      "sha512": "OVPI/nh5AqfLCIKhAYqjCa6AHhc7oKApGcGM3UhMRSerFiBx58nSpGwxVFdMgjOCWZR+fA49nzsnKlWp5hFo8w==",
+      "type": "package",
+      "path": "sqlitepclraw.bundle_e_sqlite3/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll",
+        "lib/Xamarin.tvOS10/SQLitePCLRaw.batteries_v2.dll",
+        "lib/net461/SQLitePCLRaw.batteries_v2.dll",
+        "lib/net461/SQLitePCLRaw.nativelibrary.dll",
+        "lib/netcoreapp3.0/SQLitePCLRaw.batteries_v2.dll",
+        "lib/netcoreapp3.0/SQLitePCLRaw.nativelibrary.dll",
+        "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll",
+        "sqlitepclraw.bundle_e_sqlite3.2.0.2.nupkg.sha512",
+        "sqlitepclraw.bundle_e_sqlite3.nuspec"
+      ]
+    },
     "SQLitePCLRaw.core/2.0.2": {
       "sha512": "TFSBX426OelS1tkaVC254NVVlrJIe9YLhWPkEvuqJj2104QpmDmEYOhfdfDJD1E/2SmqDhoRw1ek5cQHj8olcQ==",
       "type": "package",
@@ -1095,6 +1226,48 @@
         "lib/netstandard2.0/SQLitePCLRaw.core.dll",
         "sqlitepclraw.core.2.0.2.nupkg.sha512",
         "sqlitepclraw.core.nuspec"
+      ]
+    },
+    "SQLitePCLRaw.lib.e_sqlite3/2.0.2": {
+      "sha512": "S+Tsqe/M7wsc+9HeediI6UHtBKf2X586aRwhi1aBVLGe0WxkAo52O9ZxwEy/v8XMLefcrEMupd2e9CDlIT6QCw==",
+      "type": "package",
+      "path": "sqlitepclraw.lib.e_sqlite3/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net461/SQLitePCLRaw.lib.e_sqlite3.targets",
+        "lib/net461/_._",
+        "lib/netstandard2.0/_._",
+        "runtimes/alpine-x64/native/libe_sqlite3.so",
+        "runtimes/linux-arm/native/libe_sqlite3.so",
+        "runtimes/linux-arm64/native/libe_sqlite3.so",
+        "runtimes/linux-armel/native/libe_sqlite3.so",
+        "runtimes/linux-musl-x64/native/libe_sqlite3.so",
+        "runtimes/linux-x64/native/libe_sqlite3.so",
+        "runtimes/linux-x86/native/libe_sqlite3.so",
+        "runtimes/osx-x64/native/libe_sqlite3.dylib",
+        "runtimes/win-arm/native/e_sqlite3.dll",
+        "runtimes/win-arm64/native/e_sqlite3.dll",
+        "runtimes/win-x64/native/e_sqlite3.dll",
+        "runtimes/win-x86/native/e_sqlite3.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/e_sqlite3.dll",
+        "runtimes/win10-arm64/nativeassets/uap10.0/e_sqlite3.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/e_sqlite3.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/e_sqlite3.dll",
+        "sqlitepclraw.lib.e_sqlite3.2.0.2.nupkg.sha512",
+        "sqlitepclraw.lib.e_sqlite3.nuspec"
+      ]
+    },
+    "SQLitePCLRaw.provider.dynamic_cdecl/2.0.2": {
+      "sha512": "ZSwacbKJUsxJEZxwT23uZVrGbaIvXcADZDz5Sr66fikO5eehdcceDncjzwzTzWfW13di8gpTpstx3WJSt/Ci5Q==",
+      "type": "package",
+      "path": "sqlitepclraw.provider.dynamic_cdecl/2.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll",
+        "sqlitepclraw.provider.dynamic_cdecl.2.0.2.nupkg.sha512",
+        "sqlitepclraw.provider.dynamic_cdecl.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/5.5.1": {
@@ -1375,6 +1548,8 @@
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.8",
       "Microsoft.EntityFrameworkCore >= 3.1.8",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.8",
+      "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.8",
+      "Microsoft.EntityFrameworkCore.Sqlite.Core >= 3.1.8",
       "PetShop.Core.Entities >= 1.0.0",
       "PetShop.Infrastructure.MSSQL.Data >= 1.0.0",
       "PetShop.UI >= 1.0.0",
@@ -1437,6 +1612,14 @@
             "version": "[3.1.8, )"
           },
           "Microsoft.EntityFrameworkCore.InMemory": {
+            "target": "Package",
+            "version": "[3.1.8, )"
+          },
+          "Microsoft.EntityFrameworkCore.Sqlite": {
+            "target": "Package",
+            "version": "[3.1.8, )"
+          },
+          "Microsoft.EntityFrameworkCore.Sqlite.Core": {
             "target": "Package",
             "version": "[3.1.8, )"
           },

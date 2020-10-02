@@ -40,7 +40,8 @@ namespace PetShop.Infrastructure.MSSQL.Data
         /// <returns>all pets in the database as a List<Pet></returns>
         public List<Pet> ReadPets()
         {
-            return _ctx.Pets.ToList();
+            List<Pet> testList = _ctx.Pets.ToList();
+            return testList;
         }
         /// <summary>
         /// Removes a pet from the database

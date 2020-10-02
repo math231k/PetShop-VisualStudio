@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using PetShop.Core.ApplicationServices;
 using PetShop.Core.Entities;
+using PetShop.Infrastructure.MSSQL.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,7 +17,9 @@ namespace PetShot.WebAPI.Controllers.Implementation
     public class PetsController : ControllerBase, IPetController
     {
         private readonly IPetService _petService;
+        private readonly PetShopAppContext _ctx;
         private List<Pet> PetsReferance = new List<Pet>();
+
         public PetsController(IPetService petService)
         {
             _petService = petService;

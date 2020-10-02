@@ -34,22 +34,16 @@ namespace PetShot.RestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //FakeDB.initData();
-
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder.AddConsole();
             });
 
-            services.AddDbContext<PetShopAppContext>
-                (
-                opt =>
-
-                    opt.UseLoggerFactory(loggerFactory).
-                    AddInterceptors(new DBInterceptor()).
-                    UseSqlite("Data Source=PetApp.db"),
-                    ServiceLifetime.Transient
-                );
+            services.AddDbContext<PetShopAppContext>(opt => opt.UseSqlite("Data Source=petshop.db").
+            UseLoggerFactory(loggerFactory).
+            AddInterceptors(new DBInterceptor()),
+            ServiceLifetime.Transient
+            );
             
 
             services.AddScoped<IPetRepository, PetSQLRepository>();
@@ -60,6 +54,10 @@ namespace PetShot.RestAPI
 
             services.AddScoped<IPetTypeRepository, PetTypeRepository>();
             services.AddScoped<IPetTypeService, PetTypeService>();
+
+            
+
+            
 
             services.AddSwaggerGen(options =>
             {
@@ -87,19 +85,21 @@ namespace PetShot.RestAPI
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
+                
                 //Hvis det køres lokalt ryk using ud af In Development
-                using (var scope = app.ApplicationServices.CreateScope())
-                {
-                    var ctx = scope.ServiceProvider.GetService<PetShopAppContext>();
-                    //ctx.Database.EnsureDeleted();
-                    //ctx.Database.EnsureCreated();
-                    var petRepository = scope.ServiceProvider.GetService<IPetRepository>();
-                    var ownerRepository = scope.ServiceProvider.GetService<IOwnerRepository>();
-                    var petTypeRepository = scope.ServiceProvider.GetService<IPetTypeRepository>();
-                }
             }
-            
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var ctx = scope.ServiceProvider.GetService<PetShopAppContext>();
+                var petRepository = scope.ServiceProvider.GetService<IPetRepository>();
+                var ownerRepository = scope.ServiceProvider.GetService<IOwnerRepository>();
+                var petTypeRepository = scope.ServiceProvider.GetService<IPetTypeRepository>();
+                ctx.initData();
+
+                ctx.Database.EnsureDeleted();
+                ctx.Database.EnsureCreated();
+            }
 
             app.UseHttpsRedirection();
 
